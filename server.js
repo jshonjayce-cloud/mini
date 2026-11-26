@@ -29,12 +29,12 @@ app.use(express.urlencoded({ extended: true }));
 const BOT_TOKEN = process.env.BOT_TOKEN;
 const CLIENT_ID = process.env.CLIENT_ID;
 const PORT = process.env.PORT || 3000;
-const GUILD_ID = process.env.GUILD_ID || "1569479498741579776";
-const FULL_COMMAND_ACCESS_ROLE = "1570780402363400262";
-const MAIN_ACCESS_ROLE = "1569493916108066966";
-const ADMIN_ROLE = "1569494503662821448";
-const MOBILE_MAIN_ROLE = "1569493955962216548";
-const USERINFO_ROLES = ["1552637829815865414", ADMIN_ROLE, FULL_COMMAND_ACCESS_ROLE];
+const GUILD_ID = process.env.GUILD_ID || "1574280072397856798";
+const FULL_COMMAND_ACCESS_ROLE = "1574280723299434598;
+const MAIN_ACCESS_ROLE = "1575629383094378587";
+const ADMIN_ROLE = "1574280723299434598";
+const MOBILE_MAIN_ROLE = "1575629383094378587";
+const USERINFO_ROLES = ["1574280723299434598", ADMIN_ROLE, FULL_COMMAND_ACCESS_ROLE];
 const RESET_COOLDOWN = 1000 * 60 * 15;
 const KEY_LIFETIME = 1000 * 60 * 60 * 24 * 30;
 const VALID_SCRIPTS = ["main", "mobile"];
@@ -107,7 +107,7 @@ function generateKey() {
   const a = Math.random().toString(36).substring(2, 6).toUpperCase();
   const b = Math.random().toString(36).substring(2, 10).toUpperCase();
   const c = Math.random().toString(36).substring(2, 4).toUpperCase();
-  return "JAYCE-" + a + "-" + b + "-" + c;
+  return "mini-" + a + "-" + b + "-" + c;
 }
 
 function formatDate(ms) {
@@ -289,7 +289,7 @@ function createLuaTemplate(u, k, endpoint, displayName) {
     : (process.env.DOMAIN || "localhost:3000");
 
   return [
-    `-- ${displayName} : -- /jayce Loader`,
+    `-- ${displayName} : -- mini Loader`,
     `local USERNAME = "${u}"`,
     `local KEY = "${k}"`,
     `local HWID = game:GetService("RbxAnalyticsService"):GetClientId()`,
@@ -306,14 +306,14 @@ function createLuaTemplate(u, k, endpoint, displayName) {
     "  })",
     "end)",
     "",
-    "if not ok then error('[ /f2K8KAdBY5 ] Could not reach server: ' .. tostring(response)) end",
+    "if not ok then error('[ /4UdCsaFqh ] Could not reach server: ' .. tostring(response)) end",
     "",
     "local data = HttpService:JSONDecode(response.Body)",
     "if not data.success then",
     "  if data.reason == 'HWID mismatch' then",
-    "    game:GetService('Players').LocalPlayer:Kick('Wrong device detected. Visit discord.gg/f2K8KAdBY5 to reset your HWID.')",
+    "    game:GetService('Players').LocalPlayer:Kick('Wrong device detected. Visit https://discord.gg/4UdCsaFqh to reset your HWID.')",
     "  end",
-    "  error('[ /f2K8KAdBY5 ] ' .. (data.reason or 'Unknown error'))",
+    "  error('[ /4UdCsaFqh ] ' .. (data.reason or 'Unknown error'))",
     "end",
     "",
     "loadstring(data.chunk)()"
@@ -323,21 +323,21 @@ function createLuaTemplate(u, k, endpoint, displayName) {
 function createPanel() {
   const embed = new EmbedBuilder()
     .setColor(0xEAF4FF)
-    .setTitle("☁️ ୨୧ jayce script panel୨୧ ☁️")
+    .setTitle("mini script panel")
     .setDescription(
-      "˚₊‧꒰ა Welcome to the heavenly control panel ໒꒱‧₊˚\n\n" +
+      "˚₊‧꒰ა ໒꒱‧₊˚\n\n" +
       "Register an account\n" +
       " Get your key\n" +
       "Main loader\n" +
       " Mobile loader\n" +
       "Reset HWID\n\n" +
-      "˚₊‧ May your day be full of sunshine and stardust ‧₊˚"
+      "˚₊‧  ‧₊˚"
     )
     .addFields({
       name: " Available Actions",
       value: "Register  ·  Get Key  ·  Main  ·  Mobile  ·  Reset HWID"
     })
-    .setFooter({ text: "Made with love and a little stardust " });
+    .setFooter({ text: "<3 " });
 
   const row = new ActionRowBuilder().addComponents(
     new ButtonBuilder().setCustomId("jc_register").setLabel(" Register").setStyle(ButtonStyle.Primary),
